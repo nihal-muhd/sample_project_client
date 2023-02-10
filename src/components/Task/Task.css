@@ -1,0 +1,26 @@
+.TaskMain {
+  border: 1px solid var(--white);
+  border-radius: 0.25rem;
+  margin-bottom: 0.9rem;
+}
+.task {
+  padding: 1rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  align-items: flex-end;
+}
+.moveTask {
+  margin-bottom: 0.5rem;
+  font-size: 1.5rem;
+  padding: 0.3rem 0.5rem;
+}
+
+.title {
+  margin-bottom: 0.5rem;
+  padding: 0.5rem 0;
+  width: 100%;
+  font-size: 1.1rem;
+}
+.taskDelete {
+  margin-bottom: 0.9rem;
+}

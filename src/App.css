@@ -1,0 +1,140 @@
+:root {
+  --blue: #132743;
+  --grey: #686d76;
+  --white: #eeecda;
+  --gold: #edc988;
+  --green: #9ad3bc;
+  --yellow: #edf285;
+  --pink: #ffa5a5;
+  --red: #ff8282;
+  --highlight: #2ec1ac;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: "Kanit", sans-serif;
+  background-color: var(--blue);
+  color: var(--white);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  margin: 2rem 0;
+  font-weight: 400;
+}
+
+main {
+  display: flex;
+  flex-direction: column;
+  border: 1px solid var(--green);
+  align-items: center;
+  width: fit-content;
+}
+
+section {
+  display: flex;
+  width: 70rem;
+  margin-bottom: 2rem;
+}
+
+.button {
+  border: 1px solid var(--gold);
+  text-transform: uppercase;
+  width: fit-content;
+  padding: 0.3rem 1.5rem;
+  background-color: var(--green);
+  border-color: var(--green);
+  color: var(--blue);
+  font-weight: 500;
+  font-family: "Kanit", sans-serif;
+  border-radius: 0.25rem;
+  font-size: 1rem;
+  margin-right: 0.25rem;
+}
+.button:hover {
+  background-color: var(--highlight);
+  border-color: var(--highlight);
+  cursor: pointer;
+}
+
+:focus {
+  outline: none;
+  border-color: var(--highlight);
+  background-color: var(--highlight);
+  color: var(--white);
+}
+
+.addTask {
+  font-size: 3rem;
+  padding: 0 0 0.4rem 0;
+  border-radius: 50%;
+  width: 2.5rem;
+  height: 2.5rem;
+  line-height: 1rem;
+  margin-top: 2rem;
+}
+
+.moveTask {
+  font-size: 1.5rem;
+  padding: 0.5rem 0.5rem;
+  margin-bottom: 0;
+  line-height: 1rem;
+}
+
+.delete {
+  background-color: var(--pink);
+  border-color: var(--pink);
+}
+.delete:hover {
+  background-color: var(--red);
+  border-color: var(--red);
+}
+
+@media only screen and (max-width: 75rem) {
+  section {
+    width: 100%;
+    flex-direction: column;
+  }
+}
+/* input[type=text] { 
+  padding: 5px;
+  margin-bottom: 10px; 
+  border-radius: 10px;
+	text-align: left;
+	cursor: pointer;
+	display: block; 
+	width: 20%; 
+	letter-spacing: 2px;        
+	word-spacing: 20px;               
+} */
+.search-bar{
+  width: 20%;
+  /* height: 20px; */
+  position: relative;
+  box-sizing: border-box;
+  margin-bottom: 20px;
+}
+.search-input{
+  box-sizing: border-box;
+  width: 100%;
+  height: 30px;
+  padding-left: 10px;
+  border-radius: 20px;
+}
+.search-bar>span{
+  position: absolute;
+  right: 15px;
+  top: 5px;
+  /* size: 1px; */
+  color: black;
+  cursor: pointer;
+  font-size: 20px;
+}
+
