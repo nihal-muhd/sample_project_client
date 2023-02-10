@@ -56,9 +56,9 @@ const StatusLine = (props) => {
   }
 
  async function deleteTask(taskId) {
-    await axios.post('https://perfumeshop.club/delete-task',{taskId},{withCredentials:true})
-    let filteredTask = tasks.filter((task) => task.id !== taskId);
-    setTasks(filteredTask);
+   let filteredTask = tasks.filter((task) => task.id !== taskId);
+   setTasks(filteredTask);
+   await axios.post('https://perfumeshop.club/delete-task',{taskId},{withCredentials:true})
   }
 
   if (tasks) {
