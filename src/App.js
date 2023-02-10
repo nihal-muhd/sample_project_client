@@ -17,7 +17,7 @@ function App() {
 
   useEffect(()=>{
     async function searchTask(){
-      const res = await axios.get("https://perfumeshop.club//get-task", {
+      const res = await axios.get("https://perfumeshop.club/get-task", {
         withCredentials: true,
       });
       setTaskData(res.data)
