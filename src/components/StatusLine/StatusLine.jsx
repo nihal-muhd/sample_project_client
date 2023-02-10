@@ -14,7 +14,7 @@ const StatusLine = (props) => {
 
   useEffect(() => {
     async function getTask() {
-      const res = await axios.get("http://localhost:5000/get-task", {
+      const res = await axios.get("https://perfumeshop.club/get-task", {
         withCredentials: true,
       });
       // console.log(res);
@@ -35,7 +35,7 @@ const StatusLine = (props) => {
     };
     console.log(newTask);
     await axios.post(
-      "http://localhost:5000/add-task",
+      "https://perfumeshop.club/add-task",
       { newTask, status },
       { withCredentials: true }
     );
@@ -52,11 +52,11 @@ const StatusLine = (props) => {
     task[0].status = newStatus;
     let changedStatus=filteredTask.concat(task)
     setTasks(changedStatus);
-    await axios.post('http://localhost:5000/move-task',{id,stepStatus},{withCredentials:true})
+    await axios.post('https://perfumeshop.club/move-task',{id,stepStatus},{withCredentials:true})
   }
 
  async function deleteTask(taskId) {
-    await axios.post('http://localhost:5000/delete-task',{taskId},{withCredentials:true})
+    await axios.post('https://perfumeshop.club/delete-task',{taskId},{withCredentials:true})
     let filteredTask = tasks.filter((task) => task.id !== taskId);
     setTasks(filteredTask);
   }

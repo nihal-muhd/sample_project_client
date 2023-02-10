@@ -11,11 +11,13 @@ function App() {
   const [searchModal, setSearchModal] = useState(false)
   const [taskData,setTaskData]=useState([])
   const [searchWord,setSearchWord]=useState('')
-  let findWord
+  // const  [findWord,setFindWord]=useState([])
+  var findWord
+
 
   useEffect(()=>{
     async function searchTask(){
-      const res = await axios.get("http://localhost:5000/get-task", {
+      const res = await axios.get("https://perfumeshop.club//get-task", {
         withCredentials: true,
       });
       setTaskData(res.data)
@@ -26,6 +28,8 @@ function App() {
   const handleSearch=async()=>{
     findWord=taskData.filter((v)=>v.title===searchWord)
     setSearchModal(true)
+    // console.log(arr,'hey')
+    // setFindWord(arr)
   }
 
   return (
@@ -50,10 +54,13 @@ function App() {
             status='Step 4'  />
         </section>
       </main>
+      {findWord ==''?'':<>
       <SearchModal searchModal={searchModal}
         setSearchModal={setSearchModal}
         findWord={findWord}
          />
+      </>}
+     
     </div>
   );
 }
