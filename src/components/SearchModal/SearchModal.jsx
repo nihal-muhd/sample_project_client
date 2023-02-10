@@ -3,7 +3,6 @@ import { Modal, useMantineTheme } from '@mantine/core'
 
 // eslint-disable-next-line react/prop-types
 const SearchModal = ({ searchModal, setSearchModal, findWord }) => {
-console.log(findWord,'modal')
   const theme = useMantineTheme()
 
   return (
@@ -16,9 +15,20 @@ console.log(findWord,'modal')
       opened={searchModal}
       onClose={() => setSearchModal(false)}
     >
-{findWord ?<><h3>{findWord?.title}</h3>
-<p>{findWord?.status}</p></>
-:<h3>oops no task found</h3>}
+{findWord?.map((v,i)=>{
+  if(v===null){
+    return <h3>Ooops no data found</h3>
+  }else{
+    return(
+      <>
+      <p key={i}>{v.title}</p>
+      <p>{v.status}</p>
+      </>
+    )
+  }
+ 
+})
+}
   
     </Modal>
   )

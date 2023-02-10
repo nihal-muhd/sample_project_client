@@ -11,8 +11,7 @@ function App() {
   const [searchModal, setSearchModal] = useState(false)
   const [taskData,setTaskData]=useState([])
   const [searchWord,setSearchWord]=useState('')
-  // const  [findWord,setFindWord]=useState([])
-  var findWord
+  const [findWord,setFindWord]=useState([])
 
 
   useEffect(()=>{
@@ -25,11 +24,10 @@ function App() {
     searchTask()
   },[])
 
-  const handleSearch=async()=>{
-    findWord=taskData.filter((v)=>v.title===searchWord)
+  const handleSearch=()=>{
+    let arr=taskData.filter((v)=>v.title===searchWord)
     setSearchModal(true)
-    // console.log(arr,'hey')
-    // setFindWord(arr)
+    setFindWord(arr)
   }
 
   return (
