@@ -2,10 +2,10 @@ import React, { useEffect, useState } from "react";
 import Task from "../Task/Task";
 import "./StatusLine.css";
 import AddTask from "../AddTask/AddTask";
-import axios from "axios";
+import axios from '../../config/axios'
 
 const StatusLine = (props) => {
-  const { status } = props;
+  const { status,moveTask } = props;
   const [modalOpen, setModalOpen] = useState(false);
   const [tasks, setTasks] = useState([]);
 
@@ -14,14 +14,14 @@ const StatusLine = (props) => {
 
   useEffect(() => {
     async function getTask() {
-      const res = await axios.get("https://perfumeshop.club/get-task", {
+      const res = await axios.get("/get-task", {
         withCredentials: true,
       });
       // console.log(res);
       setTasks(res.data);
     }
     getTask();
-  }, []);
+  }, [stepStatus]);
 
   function handleAddEmpty() {
     setModalOpen(true);
@@ -35,7 +35,7 @@ const StatusLine = (props) => {
     };
     console.log(newTask);
     await axios.post(
-      "https://perfumeshop.club/add-task",
+      "/add-task",
       { newTask, status },
       { withCredentials: true }
     );
@@ -45,20 +45,20 @@ const StatusLine = (props) => {
     setModalOpen(false);
   }
 
- async function moveTask(id, newStatus) {
-    stepStatus = newStatus;
-    let task = tasks?.filter((task) => task.id === id);
-    let filteredTask = tasks?.filter((task) => task.id !== id);
-    task[0].status = newStatus;
-    let changedStatus=filteredTask.concat(task)
-    setTasks(changedStatus);
-    await axios.post('https://perfumeshop.club/move-task',{id,stepStatus},{withCredentials:true})
-  }
+//  async function moveTask(id, newStatus) {
+//     stepStatus = newStatus;
+//     let task = tasks?.filter((task) => task.id === id);
+//     let filteredTask = tasks?.filter((task) => task.id !== id);
+//     task[0].status = newStatus;
+//     let changedStatus=filteredTask.concat(task)
+//     setTasks(changedStatus);
+//     await axios.post('/move-task',{id,newStatus},{withCredentials:true})
+//   }
 
  async function deleteTask(taskId) {
    let filteredTask = tasks.filter((task) => task.id !== taskId);
    setTasks(filteredTask);
-   await axios.post('https://perfumeshop.club/delete-task',{taskId},{withCredentials:true})
+   await axios.post('/delete-task',{taskId},{withCredentials:true})
   }
 
   if (tasks) {

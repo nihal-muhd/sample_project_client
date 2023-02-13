@@ -47,21 +47,50 @@ const Task = (props) => {
 
   return (
     <div className="TaskMain">
-      <div className="task">
-        <button onClick={handleMoveLeft} className="button moveTask">
-          <BsFillArrowLeftCircleFill />
-        </button>
-        <p className="title">{task.title}</p>
+      {task.status === "Step 1" ? (
+        <div className="task">
+          <button className="button delete" onClick={handleDelete}>
+            <BsFillTrashFill />
+          </button>
+          <p className="title">{task.title}</p>
 
-        <button onClick={handleMoveRight} className="button moveTask">
-          <BsFillArrowRightCircleFill />
-        </button>
-      </div>
-      <div className="taskDelete">
-        <button className="button delete" onClick={handleDelete}>
-          <BsFillTrashFill />
-        </button>
-      </div>
+          <button onClick={handleMoveRight} className="button moveTask">
+            <BsFillArrowRightCircleFill />
+          </button>
+        </div>
+      )  : task.status==='Step 4' ?(
+        <>
+          <div className="task">
+            <button onClick={handleMoveLeft} className="button moveTask">
+              <BsFillArrowLeftCircleFill />
+            </button>
+            <p className="title">{task.title}</p>
+
+            <button className="button delete" onClick={handleDelete}>
+              <BsFillTrashFill />
+            </button>
+          </div>
+        </>
+      ):
+      (
+        <>
+          <div className="task">
+            <button onClick={handleMoveLeft} className="button moveTask">
+              <BsFillArrowLeftCircleFill />
+            </button>
+            <p className="title">{task.title}</p>
+
+            <button onClick={handleMoveRight} className="button moveTask">
+              <BsFillArrowRightCircleFill />
+            </button>
+          </div>
+          <div className="taskDelete">
+            <button className="button delete" onClick={handleDelete}>
+              <BsFillTrashFill />
+            </button>
+          </div>
+        </>
+      )}
     </div>
   );
 };
