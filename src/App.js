@@ -28,12 +28,13 @@ function App() {
   },[searchWord])
 
    function moveTask(id, newStatus) {
+    let stepStatus=newStatus
     let task = taskData?.filter((task) => task.id === id)[0];
     let filteredTask = taskData?.filter((task) => task.id !== id);
     task.status = newStatus;
     let newTaskList = [...filteredTask, task];
     setTaskData(newTaskList);
-    axios.post('/move-task',{id,newStatus},{withCredentials:true})
+    axios.post('/move-task',{id,stepStatus},{withCredentials:true})
   }
 
   const handleSearch=()=>{
